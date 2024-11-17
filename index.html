@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rive Animation Example</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/@rive-app/canvas@2.17.3"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <canvas id="canvas" width="700" height="700"></canvas>
+        <script>     const r = new rive.Rive({
+            src: "/file/card.riv",
+            // OR the path to a discoverable and public Rive asset
+            // src: '/public/example.riv',
+            canvas: document.getElementById("canvas"),
+            autoplay: true,
+            stateMachines: "State Machine 1",
+            onLoad: () => {
+              r.resizeDrawingSurfaceToCanvas();
+              const inputs = r.stateMachinesInputs('State Machine 1')
+              const trigger = inputs.find(i => i.name === 'button_hover')
+            },
+        }); </script>
+        <p></p>
+    </div>
+</body>
+</html>
